@@ -55,16 +55,4 @@ describe('countUniqueValues()', () => {
       },
     );
   });
-
-  test.skip('learning test', () => {
-    const numbers = [1, 2];
-
-    const myArray = numbers.filter((number, index, numbers) => {
-      const nextNumber = numbers.at(index + 1);
-      if (number !== nextNumber) return true;
-      else return false;
-    });
-
-    expect(myArray).toStrictEqual([1, 2]);
-  });
 });
