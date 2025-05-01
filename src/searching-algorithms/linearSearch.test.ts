@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { linearSearch } from './linerSearch';
+import { linearSearch } from './linearSearch';
 
 interface ArrangeParameters<T = unknown> {
   values: T[];
