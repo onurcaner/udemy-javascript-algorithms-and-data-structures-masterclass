@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
 
-import { BubbleSort } from './BubbleSort';
+import { InsertionSort } from './InsertionSort';
 
-describe('BubbleSort', () => {
+describe('InsertionSort', () => {
   describe('number collection', () => {
     describe('input: empty array', () => {
       test('return empty array', () => {
@@ -11,7 +11,7 @@ describe('BubbleSort', () => {
         const expectedResult: number[] = [];
 
         // Act
-        const actualResult = new BubbleSort().sortNumbers(numbers);
+        const actualResult = new InsertionSort().sortNumbers({ numbers });
 
         // Assert
         expect(actualResult).toStrictEqual(expectedResult);
@@ -25,7 +25,7 @@ describe('BubbleSort', () => {
         { numbers: [234213], expectedResult: [234213] },
       ])('numbers: $numbers', ({ expectedResult, numbers }) => {
         // Act
-        const actualResult = new BubbleSort().sortNumbers(numbers);
+        const actualResult = new InsertionSort().sortNumbers({ numbers });
 
         // Assert
         expect(actualResult).toStrictEqual(expectedResult);
@@ -41,7 +41,7 @@ describe('BubbleSort', () => {
         'numbers: $numbers, expectedResult: $expectedResult',
         ({ expectedResult, numbers }) => {
           // Act
-          const actualResult = new BubbleSort().sortNumbers(numbers);
+          const actualResult = new InsertionSort().sortNumbers({ numbers });
 
           // Assert
           expect(actualResult).toStrictEqual(expectedResult);
@@ -63,10 +63,10 @@ describe('BubbleSort', () => {
           };
 
           // Act
-          const actualResult = new BubbleSort().sortNumbers(
+          const actualResult = new InsertionSort().sortNumbers({
             numbers,
             compareFunction,
-          );
+          });
 
           // Assert
           expect(actualResult).toStrictEqual(expectedResult);
@@ -94,7 +94,7 @@ describe('BubbleSort', () => {
         'collection: $collection, expectedResult: $expectedResult',
         ({ collection, expectedResult }) => {
           // Act
-          const actualResult = new BubbleSort().sort({
+          const actualResult = new InsertionSort().sort({
             collection,
             compareFunction,
           });
@@ -123,7 +123,7 @@ describe('BubbleSort', () => {
         'collection: $collection, expectedResult: $expectedResult',
         ({ collection, expectedResult }) => {
           // Act
-          const actualResult = new BubbleSort().sort({
+          const actualResult = new InsertionSort().sort({
             collection,
             compareFunction,
           });
@@ -163,7 +163,7 @@ describe('BubbleSort', () => {
         'users: $users, expectedResult: $expectedResult',
         ({ expectedResult, users }) => {
           // Act
-          const actualResult = new BubbleSort().sort({
+          const actualResult = new InsertionSort().sort({
             collection: users,
             compareFunction,
           });
@@ -196,7 +196,7 @@ describe('BubbleSort', () => {
         'users: $users, expectedResult: $expectedResult',
         ({ expectedResult, users }) => {
           // Act
-          const actualResult = new BubbleSort().sort({
+          const actualResult = new InsertionSort().sort({
             collection: users,
             compareFunction,
           });

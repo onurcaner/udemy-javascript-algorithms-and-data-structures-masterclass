@@ -41,6 +41,8 @@ class BubbleSorter<T = number> {
       iterationCount < this.collection.length;
       iterationCount++
     ) {
+      let hasSwapped = false;
+
       for (
         let leftIndex = 0;
         leftIndex < this.collection.length - iterationCount;
@@ -51,10 +53,13 @@ class BubbleSorter<T = number> {
         const comparisonResult = this.compareFunction(left, right);
 
         if (comparisonResult > 0) {
+          hasSwapped = true;
           this.collection[leftIndex] = right;
           this.collection[leftIndex + 1] = left;
         }
       }
+
+      if (!hasSwapped) break;
     }
 
     return this;

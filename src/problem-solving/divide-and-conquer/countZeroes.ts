@@ -20,7 +20,6 @@ class CountZeroes {
       if (!(error instanceof BreakError)) throw error;
     }
 
-    console.log('loopCount=', this.loopCount);
     return this.zeroCount;
   }
 
