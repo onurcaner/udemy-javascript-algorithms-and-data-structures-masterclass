@@ -9,7 +9,6 @@ export default TypescriptEslint.config([
   // Preparation
   {
     files: ['src/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
-    ignores: ['dist'],
     languageOptions: {
       ecmaVersion: 'latest',
       globals: Globals.node,
@@ -48,5 +47,9 @@ export default TypescriptEslint.config([
   {
     files: ['src/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}'],
     extends: [EslintConfigPrettier],
+  },
+
+  {
+    ignores: ['dist'],
   },
 ]);
