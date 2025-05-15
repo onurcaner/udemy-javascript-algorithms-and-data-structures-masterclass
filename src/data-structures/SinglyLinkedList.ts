@@ -23,9 +23,7 @@ export class SinglyLinkedList<T> {
   public push(value: T): this {
     const newNode = SinglyLinkedList.createNode(value);
     const oldTail = this.tail;
-    if (oldTail !== null) {
-      oldTail.next = newNode;
-    }
+    if (oldTail) oldTail.next = newNode;
 
     this.head = this.head ?? newNode;
     this.tail = newNode;
@@ -80,7 +78,7 @@ export class SinglyLinkedList<T> {
     if (!oldHead) return undefined;
 
     // length === 1
-    if (this.head === this.tail) {
+    if (!oldHead.next) {
       this.head = null;
       this.tail = null;
       this.length = 0;
@@ -90,10 +88,6 @@ export class SinglyLinkedList<T> {
 
     //length > 1
     const newHead = oldHead.next;
-    if (!newHead)
-      throw new Error(
-        'SinglyLinkedList.prototype.head.prototype.next can not be null',
-      );
 
     oldHead.next = null;
     this.head = newHead;

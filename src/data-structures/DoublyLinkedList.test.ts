@@ -78,7 +78,7 @@ describe('DoublyLinkedList', () => {
     };
 
     test.each([createDoublyLinkedList()])(
-      'pop third element from: $values',
+      'pop the third element from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const expectedValue = values[2];
@@ -94,7 +94,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'pop second element from: $values',
+      'pop the second element from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const expectedValue = values[1];
@@ -112,7 +112,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'pop first element from: $values',
+      'pop the first element from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const expectedValue = values[0];
@@ -131,7 +131,7 @@ describe('DoublyLinkedList', () => {
       },
     );
 
-    test('get undefined if empty', () => {
+    test('get undefined if list is empty', () => {
       // Arrange
       const doublyLinkedList = new DoublyLinkedList();
       const expectedLength = 0;
@@ -156,7 +156,7 @@ describe('DoublyLinkedList', () => {
     };
 
     test.each([createDoublyLinkedList()])(
-      'shift first element from: $values',
+      'shift the first element from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const expectedValue = values[0];
@@ -172,7 +172,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'shift second element from: $values',
+      'shift the second element from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const expectedValue = values[1];
@@ -190,7 +190,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'shift third element from: $values',
+      'shift the third element from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const expectedValue = values[2];
@@ -209,7 +209,7 @@ describe('DoublyLinkedList', () => {
       },
     );
 
-    test('get undefined if empty', () => {
+    test('get undefined if list is empty', () => {
       // Arrange
       const doublyLinkedList = new DoublyLinkedList();
       const expectedLength = 0;
@@ -326,7 +326,7 @@ describe('DoublyLinkedList', () => {
     };
 
     test.each([createDoublyLinkedList()])(
-      'set first element',
+      'set the first element',
       ({ doublyLinkedList }) => {
         // Arrange
         const setIndex = 0;
@@ -344,7 +344,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'set second element',
+      'set the second element',
       ({ doublyLinkedList }) => {
         // Arrange
         const setIndex = 1;
@@ -406,7 +406,7 @@ describe('DoublyLinkedList', () => {
     });
 
     test.each([createDoublyLinkedList()])(
-      'insert at the start of the list',
+      'insert at the start of list',
       ({ doublyLinkedList }) => {
         // Arrange
         const expectedLength = doublyLinkedList.length + 1;
@@ -426,7 +426,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'insert at the end of the list',
+      'insert at the end of list',
       ({ doublyLinkedList }) => {
         // Arrange
         const expectedLength = doublyLinkedList.length + 1;
@@ -446,7 +446,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'insert at somewhere middle of the list',
+      'insert at somewhere middle of list',
       ({ doublyLinkedList }) => {
         // Arrange
         const expectedLength = doublyLinkedList.length + 1;
@@ -466,7 +466,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'try to insert at outside of the list',
+      'try to insert at outside of list',
       ({ doublyLinkedList }) => {
         // Arrange
         const expectedLength = doublyLinkedList.length;
@@ -495,7 +495,7 @@ describe('DoublyLinkedList', () => {
     };
 
     test.each([createDoublyLinkedList()])(
-      'remove first node from: $values',
+      'remove the first node from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const index = 0;
@@ -529,7 +529,7 @@ describe('DoublyLinkedList', () => {
     );
 
     test.each([createDoublyLinkedList()])(
-      'remove last node from: $values',
+      'remove the last node from: $values',
       ({ doublyLinkedList, values }) => {
         // Arrange
         const index = doublyLinkedList.length - 1;
@@ -591,7 +591,7 @@ describe('DoublyLinkedList', () => {
       expect(doublyLinkedList.head).toBe(doublyLinkedList.tail);
     });
 
-    test('reverse the list properly', () => {
+    test('reverse list properly', () => {
       // Arrange
       const doublyLinkedList = new DoublyLinkedList<number>();
       const values = [123, 456, 789, 123456789];

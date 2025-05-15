@@ -111,7 +111,7 @@ describe('SinglyLinkedList', () => {
     };
 
     test.each([createSinglyLinkedList()])(
-      'pop third element from: $values',
+      'pop the third element from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const expectedLength = 2;
@@ -126,7 +126,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'pop second element from: $values',
+      'pop the second element from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const expectedLength = 1;
@@ -143,7 +143,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'pop first element from: $values',
+      'pop the first element from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const expectedLength = 0;
@@ -161,7 +161,7 @@ describe('SinglyLinkedList', () => {
       },
     );
 
-    test('get undefined if empty', () => {
+    test('get undefined if list is empty', () => {
       // Arrange
       const singlyLinkedList = new SinglyLinkedList();
       const expectedLength = 0;
@@ -186,7 +186,7 @@ describe('SinglyLinkedList', () => {
     };
 
     test.each([createSinglyLinkedList()])(
-      'shift first element from: $values',
+      'shift the first element from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const expectedLength = 2;
@@ -201,7 +201,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'shift second element from: $values',
+      'shift the second element from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const expectedLength = 1;
@@ -218,7 +218,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'shift third element from: $values',
+      'shift the third element from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const expectedLength = 0;
@@ -316,7 +316,7 @@ describe('SinglyLinkedList', () => {
     };
 
     test.each([createSinglyLinkedList()])(
-      'set first element',
+      'set the first element',
       ({ singlyLinkedList }) => {
         // Arrange
         const setIndex = 0;
@@ -334,7 +334,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'set second element',
+      'set the second element',
       ({ singlyLinkedList }) => {
         // Arrange
         const setIndex = 1;
@@ -396,7 +396,7 @@ describe('SinglyLinkedList', () => {
     });
 
     test.each([createSinglyLinkedList()])(
-      'insert at the start of the list',
+      'insert at the start of list',
       ({ singlyLinkedList }) => {
         // Arrange
         const expectedLength = singlyLinkedList.length + 1;
@@ -416,7 +416,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'insert at the end of the list',
+      'insert at the end of list',
       ({ singlyLinkedList }) => {
         // Arrange
         const expectedLength = singlyLinkedList.length + 1;
@@ -436,7 +436,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'insert at somewhere middle of the list',
+      'insert at somewhere middle of list',
       ({ singlyLinkedList }) => {
         // Arrange
         const expectedLength = singlyLinkedList.length + 1;
@@ -456,7 +456,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'try to insert at outside of the list',
+      'try to insert at outside of list',
       ({ singlyLinkedList }) => {
         // Arrange
         const expectedLength = singlyLinkedList.length;
@@ -485,7 +485,7 @@ describe('SinglyLinkedList', () => {
     };
 
     test.each([createSinglyLinkedList()])(
-      'remove first node from: $values',
+      'remove the first node from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const index = 0;
@@ -502,7 +502,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'remove middle node from: $values',
+      'remove the middle node from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const index = 1;
@@ -519,7 +519,7 @@ describe('SinglyLinkedList', () => {
     );
 
     test.each([createSinglyLinkedList()])(
-      'remove last node from: $values',
+      'remove the last node from: $values',
       ({ singlyLinkedList, values }) => {
         // Arrange
         const index = singlyLinkedList.length - 1;
@@ -581,7 +581,7 @@ describe('SinglyLinkedList', () => {
       expect(singlyLinkedList.head).toBe(singlyLinkedList.tail);
     });
 
-    test('reverse the list properly', () => {
+    test('reverse list properly', () => {
       // Arrange
       const singlyLinkedList = new SinglyLinkedList<number>();
       const values = [123, 456, 789, 123456789];

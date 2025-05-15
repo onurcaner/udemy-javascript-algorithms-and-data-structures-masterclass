@@ -50,7 +50,7 @@ export class DoublyLinkedList<T> {
     if (!oldTail) return undefined;
 
     // length === 1
-    if (this.head === this.tail) {
+    if (!oldTail.previous) {
       oldTail.previous = null;
       this.head = null;
       this.tail = null;
@@ -61,7 +61,6 @@ export class DoublyLinkedList<T> {
 
     // length > 1
     const newTail = oldTail.previous;
-    if (!newTail) throw new Error('newTail can not be null');
 
     oldTail.previous = null;
     this.tail = newTail;
@@ -77,7 +76,7 @@ export class DoublyLinkedList<T> {
     if (!oldHead) return undefined;
 
     // length === 1
-    if (this.head === this.tail) {
+    if (!oldHead.next) {
       oldHead.next = null;
 
       this.head = null;
@@ -89,7 +88,6 @@ export class DoublyLinkedList<T> {
 
     // length > 1
     const newHead = oldHead.next;
-    if (!newHead) throw new Error('newHead can not be null');
 
     oldHead.next = null;
     newHead.previous = null;
