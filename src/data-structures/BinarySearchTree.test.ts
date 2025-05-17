@@ -140,7 +140,7 @@ describe('BinarySearchTree', () => {
     }
 
     test.each([createBinarySearchTree(8)])(
-      'asdf',
+      'find existing values',
       ({ binarySearchTree, values }) => {
         // Act
         const foundNodes = values.map((value) => binarySearchTree.find(value));
@@ -149,6 +149,21 @@ describe('BinarySearchTree', () => {
         // Assert
         expect(foundNodes).not.toContain(undefined);
         expect(foundValues).toStrictEqual(values);
+      },
+    );
+
+    test.each([createBinarySearchTree(8)])(
+      'return undefined if search value does not exist.',
+      ({ binarySearchTree }) => {
+        const searchValue = 'you can not find string in bst<number>';
+
+        // Act
+        const foundNode = binarySearchTree.find(
+          searchValue as unknown as number,
+        );
+
+        // Assert
+        expect(foundNode).toBeUndefined();
       },
     );
   });
@@ -266,5 +281,170 @@ describe('BinarySearchTree', () => {
         expect(binarySearchTree.root?.value).toBe(newValue);
       },
     );
+  });
+
+  describe('.prototype.findSecondLargest()', () => {
+    /**
+     * ______________20
+     *
+     * ________10__________30
+     *
+     * _____05____15____25
+     *
+     * __02
+     *
+     * _____04
+     */
+    function createBinarySearchTree(size: number) {
+      const binarySearchTree = new BinarySearchTree();
+      const values = [20, 10, 30, 5, 15, 25, 2, 4].slice(0, size);
+      values.forEach((value) => {
+        binarySearchTree.insert(value);
+      });
+
+      return { binarySearchTree, values };
+    }
+
+    test.each([createBinarySearchTree(8)])(
+      'find the second largest value',
+      ({ binarySearchTree }) => {
+        // Arrange
+        const expectedSecondLargestValue = 25;
+
+        // Act
+        const actualSecondLargestValue = binarySearchTree.findSecondLargest();
+
+        // Assert
+        expect(actualSecondLargestValue).toBe(expectedSecondLargestValue);
+      },
+    );
+
+    test.each([createBinarySearchTree(8)])(
+      'find the third largest value after removing the second largest value',
+      ({ binarySearchTree }) => {
+        // Arrange
+        binarySearchTree.remove(25);
+        const expectedThirdLargestValue = 20;
+
+        // Act
+        const actualThirdLargestValue = binarySearchTree.findSecondLargest();
+
+        // Assert
+        expect(actualThirdLargestValue).toBe(expectedThirdLargestValue);
+      },
+    );
+
+    test.each([createBinarySearchTree(8)])(
+      'return undefined if search value does not exist.',
+      ({ binarySearchTree }) => {
+        const searchValue = 'you can not find string in bst<number>';
+
+        // Act
+        const foundNode = binarySearchTree.find(
+          searchValue as unknown as number,
+        );
+
+        // Assert
+        expect(foundNode).toBeUndefined();
+      },
+    );
+  });
+
+  describe('.prototype.isBalanced()', () => {
+    /**
+     * ______________20
+     *
+     * ________10__________30
+     *
+     * _____05____15____25
+     *
+     * __02
+     *
+     * _____04
+     */
+    function createBinarySearchTree(size: number) {
+      const binarySearchTree = new BinarySearchTree();
+      const values = [20, 10, 30, 5, 15, 25, 2, 4].slice(0, size);
+      values.forEach((value) => {
+        binarySearchTree.insert(value);
+      });
+
+      return { binarySearchTree, values };
+    }
+
+    describe('return false if tree is unbalanced', () => {
+      test.each([createBinarySearchTree(8)])(
+        'case 1',
+        ({ binarySearchTree }) => {
+          // Act
+          const isBalanced = binarySearchTree.isBalanced();
+
+          // Assert
+          expect(isBalanced).toBeFalsy();
+        },
+      );
+
+      test.each([createBinarySearchTree(8)])(
+        'case 1',
+        ({ binarySearchTree }) => {
+          // Arrange
+          binarySearchTree.remove(4);
+
+          // Act
+          const isBalanced = binarySearchTree.isBalanced();
+
+          // Assert
+          expect(isBalanced).toBeFalsy();
+        },
+      );
+
+      test.each([createBinarySearchTree(8)])(
+        'case 1',
+        ({ binarySearchTree }) => {
+          // Arrange
+          binarySearchTree.remove(4);
+          binarySearchTree.remove(15);
+          binarySearchTree.remove(25);
+
+          // Act
+          const isBalanced = binarySearchTree.isBalanced();
+
+          // Assert
+          expect(isBalanced).toBeFalsy();
+        },
+      );
+    });
+
+    describe('return true if tree is balanced', () => {
+      test.each([createBinarySearchTree(8)])(
+        'case 1',
+        ({ binarySearchTree }) => {
+          // Arrange
+          binarySearchTree.remove(2);
+          binarySearchTree.remove(4);
+
+          // Act
+          const isBalanced = binarySearchTree.isBalanced();
+
+          // Assert
+          expect(isBalanced).toBeTruthy();
+        },
+      );
+
+      test.each([createBinarySearchTree(8)])(
+        'case 1',
+        ({ binarySearchTree }) => {
+          // Arrange
+          binarySearchTree.remove(2);
+          binarySearchTree.insert(999999);
+
+          // Act
+          const isBalanced = binarySearchTree.isBalanced();
+
+          // Assert
+          expect(isBalanced).toBeTruthy();
+        },
+      );
+    });
   });
 });
