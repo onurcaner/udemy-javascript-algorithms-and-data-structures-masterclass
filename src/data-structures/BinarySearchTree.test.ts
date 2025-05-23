@@ -447,4 +447,168 @@ describe('BinarySearchTree', () => {
       );
     });
   });
+
+  describe('.prototype.breadthFirstSearch()', () => {
+    test('return empty array if tree is empty', () => {
+      // Arrange
+      const binarySearchTree = new BinarySearchTree();
+      const expectedResult: number[] = [];
+
+      // Act
+      const actualResult = binarySearchTree.breadthFirstSearch();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+
+    test('return breadth first search result correctly', () => {
+      // Arrange
+      /**
+       * ______________20
+       *
+       * ________10__________30
+       *
+       * _____05____15____25
+       *
+       * __02
+       *
+       * _____04
+       */
+      const binarySearchTree = new BinarySearchTree();
+      [20, 10, 30, 5, 15, 25, 2, 4].forEach((value) => {
+        binarySearchTree.insert(value);
+      });
+
+      const expectedResult: number[] = [20, 10, 30, 5, 15, 25, 2, 4];
+
+      // Act
+      const actualResult = binarySearchTree.breadthFirstSearch();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+  });
+
+  describe('.prototype.DFSPreOrder()', () => {
+    test('return empty array if tree is empty', () => {
+      // Arrange
+      const binarySearchTree = new BinarySearchTree();
+      const expectedResult: number[] = [];
+
+      // Act
+      const actualResult = binarySearchTree.DFSPreOrder();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+
+    test('return depth first pre-order search result correctly', () => {
+      // Arrange
+      /**
+       * ______________20
+       *
+       * ________10__________30
+       *
+       * _____05____15____25
+       *
+       * __02
+       *
+       * _____04
+       */
+      const binarySearchTree = new BinarySearchTree();
+      [20, 10, 30, 5, 15, 25, 2, 4].forEach((value) => {
+        binarySearchTree.insert(value);
+      });
+
+      const expectedResult: number[] = [20, 10, 5, 2, 4, 15, 30, 25];
+
+      // Act
+      const actualResult = binarySearchTree.DFSPreOrder();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+  });
+
+  describe('.prototype.DFSInOrder()', () => {
+    test('return empty array if tree is empty', () => {
+      // Arrange
+      const binarySearchTree = new BinarySearchTree();
+      const expectedResult: number[] = [];
+
+      // Act
+      const actualResult = binarySearchTree.DFSInOrder();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+
+    test('return depth first pre-order search result correctly', () => {
+      // Arrange
+      /**
+       * ______________20
+       *
+       * ________10__________30
+       *
+       * _____05____15____25
+       *
+       * __02
+       *
+       * _____04
+       */
+      const binarySearchTree = new BinarySearchTree();
+      [20, 10, 30, 5, 15, 25, 2, 4].forEach((value) => {
+        binarySearchTree.insert(value);
+      });
+
+      const expectedResult: number[] = [2, 4, 5, 10, 15, 20, 25, 30];
+
+      // Act
+      const actualResult = binarySearchTree.DFSInOrder();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+  });
+
+  describe('.prototype.DFSPostOrder()', () => {
+    test('return empty array if tree is empty', () => {
+      // Arrange
+      const binarySearchTree = new BinarySearchTree();
+      const expectedResult: number[] = [];
+
+      // Act
+      const actualResult = binarySearchTree.DFSPostOrder();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+
+    test('return depth first post-order search result correctly', () => {
+      // Arrange
+      /**
+       * ______________20
+       *
+       * ________10__________30
+       *
+       * _____05____15____25
+       *
+       * __02
+       *
+       * _____04
+       */
+      const binarySearchTree = new BinarySearchTree();
+      [20, 10, 30, 5, 15, 25, 2, 4].forEach((value) => {
+        binarySearchTree.insert(value);
+      });
+
+      const expectedResult: number[] = [4, 2, 5, 15, 10, 25, 30, 20];
+
+      // Act
+      const actualResult = binarySearchTree.DFSPostOrder();
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+  });
 });

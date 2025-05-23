@@ -82,9 +82,6 @@ class QuickSorter<T> {
     const pivotIndex = startIndex + smallerItemCount;
     this.swap(startIndex, pivotIndex);
 
-    console.log(this.collection.join(' '));
-    console.log('===end===');
-
     return pivotIndex;
   }
 

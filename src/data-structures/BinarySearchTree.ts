@@ -237,4 +237,65 @@ export class BinarySearchTree {
       };
     }
   }
+
+  public breadthFirstSearch(): number[] {
+    if (!this.root) return [];
+
+    const queue: BinarySearchTreeNode<number>[] = [];
+    const searchValues: number[] = [];
+
+    queue.push(this.root);
+    while (queue.length > 0) {
+      const currentNode = queue.shift();
+      if (!currentNode) break;
+
+      searchValues.push(currentNode.value);
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+
+    return searchValues;
+  }
+
+  public DFSPreOrder(): number[] {
+    if (!this.root) return [];
+
+    const searchValues: number[] = [];
+    const DFSPreOrderRecursive = (node: BinarySearchTreeNode<number>) => {
+      searchValues.push(node.value);
+      if (node.left) DFSPreOrderRecursive(node.left);
+      if (node.right) DFSPreOrderRecursive(node.right);
+    };
+    DFSPreOrderRecursive(this.root);
+
+    return searchValues;
+  }
+
+  public DFSInOrder(): number[] {
+    if (!this.root) return [];
+
+    const searchValues: number[] = [];
+    const DFSPreOrderRecursive = (node: BinarySearchTreeNode<number>) => {
+      if (node.left) DFSPreOrderRecursive(node.left);
+      searchValues.push(node.value);
+      if (node.right) DFSPreOrderRecursive(node.right);
+    };
+    DFSPreOrderRecursive(this.root);
+
+    return searchValues;
+  }
+
+  public DFSPostOrder(): number[] {
+    if (!this.root) return [];
+
+    const searchValues: number[] = [];
+    const DFSPreOrderRecursive = (node: BinarySearchTreeNode<number>) => {
+      if (node.left) DFSPreOrderRecursive(node.left);
+      if (node.right) DFSPreOrderRecursive(node.right);
+      searchValues.push(node.value);
+    };
+    DFSPreOrderRecursive(this.root);
+
+    return searchValues;
+  }
 }
