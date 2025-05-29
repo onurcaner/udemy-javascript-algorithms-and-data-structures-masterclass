@@ -1,6 +1,9 @@
 import { describe, expect, test } from 'vitest';
 
-import { Graph } from './Graph';
+/* import { Graph } from './Graph'; */
+import { /* Graph */ WeightedGraph } from './GraphV2';
+
+const Graph = WeightedGraph;
 
 describe('Graph', () => {
   test('initialization of instance', () => {
@@ -467,6 +470,91 @@ describe('Graph', () => {
         expect(actualBreadthFirstSearchResult).toStrictEqual(
           expectedBreadthFirstSearchResult,
         );
+      },
+    );
+  });
+
+  describe('.prototype.Dijkstra()', () => {
+    /**
+     *  {
+     *    A: ['E', 'D'],
+     *    B: ['C', 'D', 'F'],
+     *    C: ['B', 'D'],
+     *    D: ['B', 'C', 'A', 'F'],
+     *    E: ['A'],
+     *    F: ['B', 'D'],
+     *  }
+     */
+    const buildWeightedGraph = () => {
+      const graph = new Graph();
+      const vertexKeys = ['A', 'B', 'C', 'D', 'E', 'F'];
+      const edges: [string, string, number][] = [
+        ['B', 'C', 1],
+        ['D', 'B', 3],
+        ['A', 'E', 1],
+        ['B', 'F', 1],
+        ['C', 'D', 1],
+        ['A', 'D', 3],
+        ['F', 'D', 2],
+      ];
+
+      vertexKeys.forEach((vertexKey) => {
+        graph.addVertex(vertexKey);
+      });
+      edges.forEach(([vertexKey1, vertexKey2, distance]) => {
+        graph.addEdge(vertexKey1, vertexKey2, distance);
+      });
+
+      return graph;
+    };
+
+    test('return [] if traversal is impossible', () => {
+      // Arrange
+      const weightedGraph = buildWeightedGraph();
+      const expectedResult: string[] = [];
+
+      // Act
+      const actualResult = weightedGraph.Dijkstra('A', 'NOT-EXISTING');
+
+      // Assert
+      expect(actualResult).toStrictEqual(expectedResult);
+    });
+
+    test.each([
+      {
+        startingVertexKey: 'A',
+        endingVertexKey: 'B',
+        expectedResult: ['A', 'D', 'C', 'B'],
+      },
+      {
+        startingVertexKey: 'B',
+        endingVertexKey: 'E',
+        expectedResult: ['B', 'C', 'D', 'A', 'E'],
+      },
+      {
+        startingVertexKey: 'C',
+        endingVertexKey: 'F',
+        expectedResult: ['C', 'B', 'F'],
+      },
+      {
+        startingVertexKey: 'D',
+        endingVertexKey: 'B',
+        expectedResult: ['D', 'C', 'B'],
+      },
+    ])(
+      'from $startingVertexKey through $endingVertexKey, expectedResult: $expectedResult',
+      ({ endingVertexKey, expectedResult, startingVertexKey }) => {
+        // Arrange
+        const weightedGraph = buildWeightedGraph();
+
+        // Act
+        const actualResult = weightedGraph.Dijkstra(
+          startingVertexKey,
+          endingVertexKey,
+        );
+
+        // Assert
+        expect(actualResult).toStrictEqual(expectedResult);
       },
     );
   });
